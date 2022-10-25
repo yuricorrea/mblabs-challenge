@@ -11,7 +11,8 @@ module.exports = {
                "@screens": "./src/screens",
                "@components": "./src/components",
                "@theme": "./src/theme",
-               "@translate": "./src/i18n"
+               "@translate": "./src/i18n",
+               "@redux": "./src/redux"
              }
            }
         ]

@@ -11,7 +11,7 @@ export const Area = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 10px;j
     elevation: 3;
     box-shadow: -2px 2px 15px rgba(0,0,0,0.20);
 `;

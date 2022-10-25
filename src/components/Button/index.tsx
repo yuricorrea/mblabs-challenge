@@ -13,7 +13,6 @@ type T = {
 const Button = (props: T): JSX.Element => {
     const { onPress, label, bgColor, disabled} = props;
     const colors = theme();
-
     const handlePress = (e: GestureResponderEvent): void => {
         if(!disabled)
             onPress(e);

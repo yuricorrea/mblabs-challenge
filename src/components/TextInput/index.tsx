@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
-import { GestureResponderEvent } from 'react-native';
-import theme from '../../theme';
+import { TextInputProps } from 'react-native';
 import * as Styled from './styles';
 
 type T = {
@@ -9,10 +8,10 @@ type T = {
     disabled?: boolean,
     value: string,
     onChangeText?: Function,
-}
+} & TextInputProps
 
 const TextInput = (props: T): JSX.Element => {
-    const { label, disabled, value, onChangeText, placeholder  } = props;
+    const { label, disabled, onChangeText  } = props;
 
     const setValue = (text: string) => {
         if(!disabled && onChangeText)
@@ -23,8 +22,7 @@ const TextInput = (props: T): JSX.Element => {
         <Styled.Area>
             <Styled.Label>{label}</Styled.Label>
             <Styled.Input
-                placeholder={placeholder}
-                value={value}
+                {...props}
                 onChangeText={setValue}
             />
         </Styled.Area>

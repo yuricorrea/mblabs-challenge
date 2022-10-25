@@ -1,17 +1,34 @@
 import React, { useState } from 'react';
-import theme from '@theme';
 import { Container, Content, Title, TitleContainer, Row, RegisterLabel } from './components/styles';
 import i18n from '@translate';
 import TextInput from '@components/TextInput';
 import Button from '@components/Button';
+import { useDispatch } from 'react-redux';
+import { doRegister } from '@redux/actions/account.actions';
 
 const Register = ({ navigation }) => {
 
+    const dispatch = useDispatch();
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
     const goToLogin = () => {
         navigation.navigate('Login');
+    }
+
+    const handleSubmit = () => {
+        if(!user.trim().length || !password.trim().length){
+            alert(i18n.t('register.input_error'));
+            return;
+        }
+        const response = dispatch(doRegister({
+            user,
+            password,
+        }));
+        if(!response){
+            alert(i18n.t('register.register_error'));
+            return;
+        }
     }
 
     return (
@@ -23,16 +40,23 @@ const Register = ({ navigation }) => {
                 <Row>
                     <TextInput
                         label={i18n.t('register.user')}
+                        value={user}
+                        onChangeText={setUser}
                     />
                 </Row>
                 <Row>
                     <TextInput
                         label={i18n.t('register.password')}
+                        value={password}
+                        onChangeText={setPassword}
+                        secureTextEntry={true}
                     />
                 </Row>
                 <Row>
-                    <Button 
+                    <Button
                         label={i18n.t('register.enter')}
+                        onPress={handleSubmit}
+                        disabled={user.trim() === '' || password.trim() === ''}
                     />
                 </Row>
                 <Row>
