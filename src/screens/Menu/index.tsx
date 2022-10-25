@@ -11,7 +11,11 @@ const Menu = ({ navigation }) => {
     const currentUser = useAppSelector(state => state.account.currentUser);
 
     const handleCreateEvent = () => {
-        navigation.navigate('create_event')
+        navigation.navigate('create_event');
+    }
+
+    const handleOpenMyEvents = () => {
+        navigation.navigate('my_events');
     }
 
     const handleLogout = () => {
@@ -22,6 +26,10 @@ const Menu = ({ navigation }) => {
         {
             label: i18n.t('menu.createEvent'),
             onPress: handleCreateEvent,
+        },
+        {
+            label: i18n.t('menu.myEvents'),
+            onPress: handleOpenMyEvents,
         },
         {
             label: i18n.t('menu.exit'),

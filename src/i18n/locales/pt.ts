@@ -26,6 +26,7 @@ export default {
     menu: {
         createEvent: 'Criar evento',
         exit: 'Sair',
+        myEvents: 'Meus eventos',
         welcome: 'Olá, {{user}}',
     },
     event: {
@@ -42,4 +43,8 @@ export default {
         symbol: 'R$',
         save: 'Salvar',
     },
+    editEvent: {
+        success: 'Evento salvo com sucesso!',
+        error: 'Ocorreu um erro ao salvar o evento',
+    }
 }

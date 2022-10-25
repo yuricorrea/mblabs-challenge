@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Register, Login, EventList, Menu, EditEvent } from '@screens';
+import { Register, Login, Menu, EditEvent, EventList } from '@screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppSelector  } from '@redux';
 import theme from '@theme';
@@ -32,8 +32,22 @@ const Routes = () => {
 
     const MenuScreens = () => (
         <MenuStack.Navigator>
-            <MenuStack.Screen options={noHeader} name="main_menu" component={Menu} />
-            <MenuStack.Screen options={{ title: i18n.t('menu.createEvent')}} name="create_event" component={EditEvent} />
+            <MenuStack.Screen 
+                options={noHeader} 
+                name="main_menu" 
+                component={Menu} 
+            />
+            <MenuStack.Screen 
+                options={{ title: i18n.t('menu.createEvent')}} 
+                name="create_event" 
+                component={EditEvent} 
+            />
+            <MenuStack.Screen 
+                options={{ title: i18n.t('menu.myEvents')}} 
+                name="my_events" 
+                component={EventList} 
+                initialParams={{ mine: true }}
+            />
         </MenuStack.Navigator>
     )
 
