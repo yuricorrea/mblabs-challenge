@@ -1,7 +1,7 @@
 import { FlatList } from "react-native";
 import i18n from "@translate";
-import { useAppDispatch, useAppSelector } from "@redux";
-import { doLogout } from "@redux/actions/account.actions";
+import { useAppDispatch, useAppSelector } from "@context";
+import { doLogout } from "@context/actions/account.actions";
 import Item from "./Item";
 import { Container, Content, Title } from "./styles";
 

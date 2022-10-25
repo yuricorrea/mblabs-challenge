@@ -4,8 +4,8 @@ import { Container, Row, MiniRow, Label } from './styles';
 import i18n from '@translate';
 import { useState } from 'react';
 import DatePicker from 'react-native-date-picker';
-import { useAppDispatch } from '@redux';
-import { createEvent } from '@redux/actions/event.actions';
+import { useAppDispatch } from '@context';
+import { createEvent } from '@context/actions/event.actions';
 
 const EditEvent = ({ navigation }) => {
 

@@ -12,7 +12,7 @@ module.exports = {
                "@components": "./src/components",
                "@theme": "./src/theme",
                "@translate": "./src/i18n",
-               "@redux": "./src/redux"
+               "@context": "./src/context"
              }
            }
         ]

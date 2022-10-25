@@ -1,4 +1,4 @@
-import { useAppSelector } from "@redux";
+import { useAppSelector } from "@context";
 import { Container, Row } from "./styles";
 
 const EventList = () => {

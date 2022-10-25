@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   KeyboardAvoidingView,
@@ -15,7 +14,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from '@routes';
 import theme from '@theme';
 import { MainContainer } from '@components/styles';
-import { store, persistor } from '@redux/store';
+import { store, persistor } from '@context/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import i18n from '@translate';
 

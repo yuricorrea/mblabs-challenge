@@ -4,7 +4,7 @@ import i18n from '@translate';
 import TextInput from '@components/TextInput';
 import Button from '@components/Button';
 import { useDispatch } from 'react-redux';
-import { doRegister } from '@redux/actions/account.actions';
+import { doRegister } from '@context/actions/account.actions';
 
 const Register = ({ navigation }) => {
 

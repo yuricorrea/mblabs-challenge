@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Register, Login, Menu, EditEvent, EventList } from '@screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useAppSelector  } from '@redux';
+import { useAppSelector  } from '@context';
 import theme from '@theme';
 import i18n from '@translate';
 
@@ -77,6 +77,7 @@ const Routes = () => {
             <Stack.Screen 
                 name="Login" 
                 component={Login} 
+                options={noHeader} 
             />
             <Stack.Screen 
                 options={noHeader} 

@@ -5,7 +5,7 @@ import i18n from '@translate';
 import TextInput from '@components/TextInput';
 import Button from '@components/Button';
 import { useDispatch } from 'react-redux';
-import { doLogin } from '@redux/actions/account.actions';
+import { doLogin } from '@context/actions/account.actions';
 
 const Login = ({ navigation }) => {
 
