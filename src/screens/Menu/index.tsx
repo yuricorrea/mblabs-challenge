@@ -5,13 +5,13 @@ import { doLogout } from "@redux/actions/account.actions";
 import Item from "./Item";
 import { Container, Content, Title } from "./styles";
 
-const Menu = ({ navigation}) => {
+const Menu = ({ navigation }) => {
 
     const dispatch = useAppDispatch();
     const currentUser = useAppSelector(state => state.account.currentUser);
 
     const handleCreateEvent = () => {
-        navigation.navigate('')
+        navigation.navigate('create_event')
     }
 
     const handleLogout = () => {

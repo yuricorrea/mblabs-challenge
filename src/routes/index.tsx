@@ -1,5 +1,6 @@
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Register, Login, EventList, Menu } from '@screens';
+import { Register, Login, EventList, Menu, EditEvent } from '@screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppSelector  } from '@redux';
 import theme from '@theme';
@@ -7,12 +8,13 @@ import i18n from '@translate';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
+const MenuStack = createNativeStackNavigator();
+const ExploreStack = createNativeStackNavigator();
 
 const Routes = () => {
 
     const currentUser = useAppSelector(state => state.account.currentUser) || null;
-    
+
     const currentTheme = theme();
 
     const noHeader = { headerShown: false };
@@ -27,15 +29,23 @@ const Routes = () => {
         ...tabBarLabelStyle,
         tabBarIcon,
     }
+
+    const MenuScreens = () => (
+        <MenuStack.Navigator>
+            <MenuStack.Screen options={noHeader} name="main_menu" component={Menu} />
+            <MenuStack.Screen options={{ title: i18n.t('menu.createEvent')}} name="create_event" component={EditEvent} />
+        </MenuStack.Navigator>
+    )
+
     const SignedScreens = (
         <Tab.Navigator>
             <Tab.Screen 
                 options={{
                     ...tabScreenOptions,
-                    tabBarLabel: i18n.t('tabBar.eventList')
+                    tabBarLabel: i18n.t('tabBar.eventList'),
                 }} 
                 name="EventList"
-                component={EventList} 
+                component={EventList}
             />
             <Tab.Screen 
                 options={{
@@ -43,7 +53,7 @@ const Routes = () => {
                     tabBarLabel: i18n.t('tabBar.menu')
                 }} 
                 name="Menu" 
-                component={Menu} 
+                component={MenuScreens} 
             />
         </Tab.Navigator>
     );

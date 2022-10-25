@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Content, Title, TitleContainer, Row, RegisterLabel } from './components/styles';
+import { Container, Content, Title, TitleContainer, Row, RegisterLabel } from './styles';
 import i18n from '@translate';
 import TextInput from '@components/TextInput';
 import Button from '@components/Button';

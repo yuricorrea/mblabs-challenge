@@ -26,6 +26,20 @@ export default {
     menu: {
         createEvent: 'Criar evento',
         exit: 'Sair',
-        welcome: 'Olá, {{user}}'
-    }
+        welcome: 'Olá, {{user}}',
+    },
+    event: {
+        name: 'Nome',
+        startDate: 'Início',
+        endDate: 'Término',
+        address: 'Endereço',
+        description: 'Descrição',
+        price: 'Preço',
+        type: 'Tipo',
+        company: 'Empresa',
+        university: 'Universidade',
+        free: 'Grátis',
+        symbol: 'R$',
+        save: 'Salvar',
+    },
 }
