@@ -1,4 +1,8 @@
 export default {
+    tabBar: {
+        eventList: 'Explorar',
+        menu: 'Menu',
+    },
     login: {
         title: 'Login',
         user: 'Usuário',
@@ -18,5 +22,10 @@ export default {
     },
     splash: {
         loading: 'Carregando...'
+    },
+    menu: {
+        createEvent: 'Criar evento',
+        exit: 'Sair',
+        welcome: 'Olá, {{user}}'
     }
 }
