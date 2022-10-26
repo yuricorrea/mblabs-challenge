@@ -46,5 +46,9 @@ export default {
     editEvent: {
         success: 'Evento salvo com sucesso!',
         error: 'Ocorreu um erro ao salvar o evento',
+    },
+    events: {
+        search: 'Buscar',
+        empty: 'Nenhum evento encontrado'
     }
 }

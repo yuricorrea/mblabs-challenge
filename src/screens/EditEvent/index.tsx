@@ -44,7 +44,7 @@ const EditEvent = ({ navigation }) => {
             return;
         }
         alert(i18n.t('editEvent.success'));
-        // navigation.navigate('main_menu');
+        navigation.navigate('main_menu');
     }
 
     return(
