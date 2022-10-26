@@ -18,6 +18,10 @@ const Menu = ({ navigation }) => {
         navigation.navigate('event_list');
     }
 
+    const handleOpenMyPurchases = () => {
+        navigation.navigate('purchases', { purchases: true });
+    }
+
     const handleLogout = () => {
         dispatch(doLogout());
     }
@@ -30,6 +34,10 @@ const Menu = ({ navigation }) => {
         {
             label: i18n.t('menu.myEvents'),
             onPress: handleOpenMyEvents,
+        },
+        {
+            label: i18n.t('menu.purchases'),
+            onPress: handleOpenMyPurchases,
         },
         {
             label: i18n.t('menu.exit'),

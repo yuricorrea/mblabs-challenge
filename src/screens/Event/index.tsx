@@ -17,7 +17,7 @@ const EventSingle = ({ route, navigation }) => {
     const currentEvent = events.find(e => e.id == event.id);
 
     const isMine = currentUser?.user == currentEvent?.creator;
-    const bought = currentEvent?.buyers?.includes(currentUser?.name);
+    const bought = currentEvent?.buyers?.includes(currentUser?.user);
 
     const buttonLabel = isMine ? 'edit' : bought ? 'bought' : 'buy';
 

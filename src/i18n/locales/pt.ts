@@ -29,6 +29,7 @@ export default {
         myEvents: 'Meus eventos',
         welcome: 'Olá, {{user}}',
         editEvent: 'Editar Evento',
+        purchases: 'Minhas compras',
     },
     event: {
         name: 'Nome',

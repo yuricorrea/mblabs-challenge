@@ -13,6 +13,7 @@ const EventList = ({ navigation, route }) => {
 
     const { params } = route || {};
     const mine = params?.mine || false;
+    const purchases = params?.purchases || false;
 
     const [term, setTerm] = useState('');
 
@@ -25,6 +26,7 @@ const EventList = ({ navigation, route }) => {
     const filteredEvents = useCallback(() =>{
         return (events || []).filter(e => {
            return ((mine && e.creator == user) || !mine) &&
+           (!purchases || e.buyers?.includes(user)) && 
             (compare(e?.name, term) || compare(e?.description, term) || compare(e?.address, term))
         }) || [];
     }, [events, term]);

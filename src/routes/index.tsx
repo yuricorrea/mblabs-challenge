@@ -53,6 +53,11 @@ const Routes = () => {
                 component={EventList}
                 initialParams={{ mine: true }}
             />
+             <MenuStack.Screen
+                options={{ title: i18n.t('menu.purchases')}}
+                name="purchases"
+                component={EventList}
+            />
             <MenuStack.Screen
                 name="single"
                 component={Event}
