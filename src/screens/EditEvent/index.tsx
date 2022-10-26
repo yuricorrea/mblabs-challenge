@@ -44,7 +44,7 @@ const EditEvent = ({ navigation, route }) => {
         const response = dispatch(
             isNaN(currentEvent?.id) ? createEvent(event) : editEvent({
                 ...currentEvent,
-                event
+                ...event
             })
         );
         if(!response){

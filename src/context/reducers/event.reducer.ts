@@ -27,10 +27,6 @@ const initialState: T = {
     events: [],
 }
 
-const dateToString = (event: Event) => {
-    const d = new Date(event.startDate);
-    return d?.toJSON() || d?.toString() || `${event?.startDate}`;
-}
 
 const eventReducer = (state=initialState,action:A) => {
     const { type, event, user } = action;
@@ -41,7 +37,6 @@ const eventReducer = (state=initialState,action:A) => {
                 ...state.events,
                 {
                     ...event,
-                    startDate: dateToString(event),
                     id: state.nonce,
                 }
             ]
@@ -51,18 +46,17 @@ const eventReducer = (state=initialState,action:A) => {
                 events,
             }
         case Types.EDIT_EVENT:
-            events = state.events.map((e: Event) => {
-                if (e.id == event.id){
-                    event.buyers = e.buyers || [];
-                    event.startDate = dateToString(event);
-                    return event;
-                }
-                return e;
-            });
-            console.log(events);
             return {
                 ...state,
-                events,
+                events: state.events.map(e => {
+                    if(e?.id == event?.id){
+                        return {
+                            ...event,
+                            buyers: e.buyers
+                        };
+                    }
+                    return e;
+                }),
             }
         case Types.BUY_EVENT:
             return {
