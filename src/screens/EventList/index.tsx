@@ -23,9 +23,9 @@ const EventList = ({ navigation, route }) => {
     }
 
     const filteredEvents = useCallback(() =>{
-        return events.filter(e => {
+        return (events || []).filter(e => {
            return ((mine && e.creator == user) || !mine) &&
-            (compare(e.name, term) || compare(e.description, term) || compare(e.address, term))
+            (compare(e?.name, term) || compare(e?.description, term) || compare(e?.address, term))
         }) || [];
     }, [events, term]);
 

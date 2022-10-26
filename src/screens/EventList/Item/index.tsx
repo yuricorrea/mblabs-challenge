@@ -13,18 +13,18 @@ const Item = ({ item, onPress }: T) => {
         // fix Date object bug
         return (d?.toJSON ? 
                 d?.toJSON()?.split('T')?.shift(): 
-                d?.split('T')?.shift()).split('-').reverse().join('/');
+                d?.split('T')?.shift())?.split('-')?.reverse()?.join('/') || '';
     }
 
     return(
         <Row onPress={onPress}>
             <Content>
-                <Title numberOfLines={1}>{item.name}</Title>
-                <Description numberOfLines={1}>{item.description}</Description>
-                <Description numberOfLines={1}>{item.address}</Description>
+                <Title numberOfLines={1}>{item?.name}</Title>
+                <Description numberOfLines={1}>{item?.description}</Description>
+                <Description numberOfLines={1}>{item?.address}</Description>
             </Content>
             <ASide>
-                <Date numberOfLines={1}>{formatDate(item.startDate)}</Date>
+                <Date numberOfLines={1}>{formatDate(item?.startDate)}</Date>
             </ASide>
         </Row>
     )

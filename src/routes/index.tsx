@@ -43,10 +43,22 @@ const Routes = () => {
                 component={EditEvent}
             />
             <MenuStack.Screen
+                options={{ title: i18n.t('menu.editEvent')}}
+                name="edit_event"
+                component={EditEvent}
+            />
+            <MenuStack.Screen
                 options={{ title: i18n.t('menu.myEvents')}}
                 name="my_events"
                 component={EventList}
                 initialParams={{ mine: true }}
+            />
+            <MenuStack.Screen
+                name="single"
+                component={Event}
+                options={{
+                    title: i18n.t('event.event'),
+                }}
             />
         </MenuStack.Navigator>
     );
@@ -64,6 +76,11 @@ const Routes = () => {
                 options={{
                     title: i18n.t('event.event'),
                 }}
+            />
+            <ExploreStack.Screen
+                options={{ title: i18n.t('menu.editEvent')}}
+                name="edit_event"
+                component={EditEvent}
             />
         </ExploreStack.Navigator>
     )

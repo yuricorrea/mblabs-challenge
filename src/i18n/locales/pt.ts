@@ -28,6 +28,7 @@ export default {
         exit: 'Sair',
         myEvents: 'Meus eventos',
         welcome: 'Olá, {{user}}',
+        editEvent: 'Editar Evento',
     },
     event: {
         name: 'Nome',
@@ -43,6 +44,10 @@ export default {
         symbol: 'R$',
         save: 'Salvar',
         event: 'Evento',
+        buy: 'Comprar',
+        bought: 'Você comprou!',
+        edit: 'Editar',
+        dateError: 'Esse evento não está mais disponível para venda',
     },
     editEvent: {
         success: 'Evento salvo com sucesso!',
