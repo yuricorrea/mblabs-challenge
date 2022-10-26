@@ -29,9 +29,10 @@ const initialState: T = {
 
 const eventReducer = (state=initialState,action:A) => {
     const { type, event, user } = action;
+    let events = [];
     switch (type){
         case Types.CREATE_EVENT:
-            let events = [
+            events = [
                 ...state.events,
                 {
                     ...event,
@@ -45,31 +46,31 @@ const eventReducer = (state=initialState,action:A) => {
                 events,
             }
         case Types.EDIT_EVENT:
+            events = state.events.map((e: Event) => {
+                if (e.id == event.id){
+                    event.buyers = e.buyers || []
+                    return event;
+                }
+                return e;
+            });
+            console.log(events);
             return {
                 ...state,
-                events: state.events.map((e: Event) => {
-                    if (e.id == event.id){
-                        return {
-                            ...e,
-                            ...event,
-                        }
-                    }
-                    return e;
-                })
+                events,
             }
         case Types.BUY_EVENT:
             return {
                 ...state,
                 events: state.events.map((e: Event) => {
-                    if(e.id == event.id){
+                    if(e.id == event.id && user){
+                        let buyers = [...(e.buyers || [])];
+                        buyers.push(user);
                         return {
                             ...e,
-                            buyers: [
-                                ...e.buyers || [],
-                                user
-                            ]
+                            buyers,
                         }
                     }
+                    return e;
                 })
             }
         default:

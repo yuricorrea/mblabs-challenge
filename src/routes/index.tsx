@@ -49,7 +49,7 @@ const Routes = () => {
             />
             <MenuStack.Screen
                 options={{ title: i18n.t('menu.myEvents')}}
-                name="my_events"
+                name="event_list"
                 component={EventList}
                 initialParams={{ mine: true }}
             />
@@ -66,7 +66,7 @@ const Routes = () => {
     const ExploreScreens = () => (
         <ExploreStack.Navigator>
             <ExploreStack.Screen
-                name="explore"
+                name="event_list"
                 component={EventList}
                 options={noHeader}
             />

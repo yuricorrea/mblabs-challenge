@@ -48,6 +48,7 @@ export default {
         bought: 'Você comprou!',
         edit: 'Editar',
         dateError: 'Esse evento não está mais disponível para venda',
+        attenders: 'Participantes'
     },
     editEvent: {
         success: 'Evento salvo com sucesso!',

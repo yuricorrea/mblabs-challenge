@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@context";
 import { Event } from "@context/reducers/event.reducer";
 import { Label } from "@components/TextInput/styles";
-import { Container, Content, Div, Row, Text, Title } from "./styles";
+import { Container, Content, Div, Row, Text, Title, RowDivided } from "./styles";
 import i18n from "@translate";
 import Button from "@components/Button";
 import { buyEvent } from "@context/actions/event.actions";
@@ -45,7 +45,7 @@ const EventSingle = ({ route, navigation }) => {
                 <Row>
                     <Title>{currentEvent?.name}</Title>
                 </Row>
-                <Row>
+                <RowDivided>
                     <Div>
                         <Label>{i18n.t('event.startDate')}</Label>
                         <Text>{formatDate}</Text>
@@ -54,7 +54,7 @@ const EventSingle = ({ route, navigation }) => {
                         <Label>{i18n.t('event.price')}</Label>
                         <Text>{formatPrice}</Text>
                     </Div>
-                </Row>
+                </RowDivided>
                 <Row>
                     <Label>{i18n.t('event.address')}</Label>
                     <Text>{currentEvent.address}</Text>
@@ -62,6 +62,10 @@ const EventSingle = ({ route, navigation }) => {
                 <Row>
                     <Label>{i18n.t('event.description')}</Label>
                     <Text>{currentEvent.description}</Text>
+                </Row>
+                <Row>
+                    <Label>{i18n.t('event.attenders')}</Label>
+                    <Text>{currentEvent.buyers?.length ?? 0}</Text>
                 </Row>
                <Row>
                     <Button onPress={handlePress} label={i18n.t(`event.${buttonLabel}`)} />

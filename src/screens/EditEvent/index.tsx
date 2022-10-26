@@ -5,15 +5,18 @@ import i18n from '@translate';
 import { useState } from 'react';
 import DatePicker from 'react-native-date-picker';
 import { useAppDispatch } from '@context';
-import { createEvent } from '@context/actions/event.actions';
+import { createEvent, editEvent } from '@context/actions/event.actions';
 
-const EditEvent = ({ navigation }) => {
+const EditEvent = ({ navigation, route }) => {
 
-    const [name, setName] = useState('');
-    const [startDate, setStartDate] = useState(new Date());
-    const [price, setPrice] = useState(0);
-    const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
+    const { params } = route || {};
+    const currentEvent = params?.event || {};
+
+    const [name, setName] = useState(currentEvent?.name || '');
+    const [startDate, setStartDate] = useState(currentEvent?.startDate ? new Date(currentEvent?.startDate) : new Date());
+    const [price, setPrice] = useState(currentEvent?.price || 0);
+    const [description, setDescription] = useState(currentEvent?.description || '');
+    const [address, setAddress] = useState(currentEvent?.address || '');
 
     const dispatch = useAppDispatch();
 
@@ -38,13 +41,18 @@ const EditEvent = ({ navigation }) => {
             address,
             price: getPrice(price)
         }
-        const response = dispatch(createEvent(event));
+        const response = dispatch(
+            isNaN(currentEvent?.id) ? createEvent(event) : editEvent({
+                ...currentEvent,
+                event
+            })
+        );
         if(!response){
             alert(i18n.t('editEvent.error'));
             return;
         }
         alert(i18n.t('editEvent.success'));
-        navigation.navigate('main_menu');
+        navigation.goBack();
     }
 
     return(

@@ -15,7 +15,7 @@ const Menu = ({ navigation }) => {
     }
 
     const handleOpenMyEvents = () => {
-        navigation.navigate('my_events');
+        navigation.navigate('event_list');
     }
 
     const handleLogout = () => {
