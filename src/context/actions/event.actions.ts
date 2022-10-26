@@ -32,9 +32,9 @@ export const editEvent = (event: Event) => (dispatch, getState): boolean => {
 export const buyEvent = (eventId: string|number) => (dispatch, getState): boolean => {
     const { currentUser } = getState().account;
     const { events } = getState().events;
-    const currentEvent = events.find(e => e.id == eventId);
+    const currentEvent = events?.find(e => e.id == eventId) || {};
     if(currentEvent?.buyers?.includes(currentUser?.user)){
-        return;
+        return false;
     }
     dispatch({
         type: Types.BUY_EVENT,
