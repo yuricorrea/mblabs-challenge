@@ -1,8 +1,13 @@
-import { memo } from "react"
+import { memo } from "react";
+import { Event } from "@context/reducers/event.reducer";
 import { ASide, Content, Description, Row, Title, Date } from "./styles";
 
-const Item = ({ item }) => {
-    console.log(item.startDate);
+type T = {
+    item: Event,
+    onPress: Function
+}
+
+const Item = ({ item, onPress }: T) => {
 
     const formatDate = (d) => {
         // fix Date object bug
@@ -12,7 +17,7 @@ const Item = ({ item }) => {
     }
 
     return(
-        <Row>
+        <Row onPress={onPress}>
             <Content>
                 <Title numberOfLines={1}>{item.name}</Title>
                 <Description numberOfLines={1}>{item.description}</Description>

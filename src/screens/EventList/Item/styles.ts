@@ -11,7 +11,9 @@ export const Content = styled.View`
     flex: 1;
 `
 
-export const ASide = styled.View``
+export const ASide = styled.View`
+    justify-content: center;
+`
 
 export const Title = styled.Text`
     color: ${props => props.theme.textColor};

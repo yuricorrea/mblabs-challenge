@@ -6,7 +6,7 @@ import i18n from '@translate';
 import { FlatList } from "react-native";
 import Item from "./Item";
 
-const EventList = ({ route }) => {
+const EventList = ({ navigation, route }) => {
 
     const events = useAppSelector(state => state?.events?.events) || [];
     const { user } = useAppSelector(state => state?.account?.currentUser) || {};
@@ -17,26 +17,23 @@ const EventList = ({ route }) => {
     const [term, setTerm] = useState('');
 
     const compare = (str1: string, str2: string) => {
-        console.log(str2);
         if(str2.trim().length == 0)
             return true;
-        return ~str1?.toLowerCase()?.indexOf(str2?.trim()?.toLowerCase())
+        return !!~str1?.toLowerCase()?.indexOf(str2?.trim()?.toLowerCase());
     }
-
-    console.log({
-        mine,
-        user,
-    })
 
     const filteredEvents = useCallback(() =>{
         return events.filter(e => {
            return ((mine && e.creator == user) || !mine) &&
-            (compare(e.title, term) || compare(e.description, term) || compare(e.address, term))
+            (compare(e.name, term) || compare(e.description, term) || compare(e.address, term))
         }) || [];
     }, [events, term]);
 
     const renderItem = ({ item }) => {
-        return <Item item={item} />
+        const handlePress = () => {
+            navigation.navigate("single", { event: item });
+        }
+        return <Item item={item} onPress={handlePress} />
     };
 
     const Empty = (
@@ -56,6 +53,7 @@ const EventList = ({ route }) => {
                     renderItem={renderItem}
                     keyExtractor={(i,k) => `${k}`}
                     ListEmptyComponent={Empty}
+                   
                 />
             </SearchBar>
         </Container>

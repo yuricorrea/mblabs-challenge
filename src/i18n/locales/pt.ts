@@ -42,6 +42,7 @@ export default {
         free: 'Grátis',
         symbol: 'R$',
         save: 'Salvar',
+        event: 'Evento',
     },
     editEvent: {
         success: 'Evento salvo com sucesso!',
@@ -49,6 +50,6 @@ export default {
     },
     events: {
         search: 'Buscar',
-        empty: 'Nenhum evento encontrado'
-    }
+        empty: 'Nenhum evento encontrado',
+    },
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Register, Login, Menu, EditEvent, EventList } from '@screens';
+import { Register, Login, Menu, EditEvent, EventList, Event } from '@screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useAppSelector  } from '@context';
 import theme from '@theme';
@@ -32,23 +32,40 @@ const Routes = () => {
 
     const MenuScreens = () => (
         <MenuStack.Navigator>
-            <MenuStack.Screen 
-                options={noHeader} 
-                name="main_menu" 
-                component={Menu} 
+            <MenuStack.Screen
+                options={noHeader}
+                name="main_menu"
+                component={Menu}
             />
-            <MenuStack.Screen 
-                options={{ title: i18n.t('menu.createEvent')}} 
-                name="create_event" 
-                component={EditEvent} 
+            <MenuStack.Screen
+                options={{ title: i18n.t('menu.createEvent')}}
+                name="create_event"
+                component={EditEvent}
             />
-            <MenuStack.Screen 
-                options={{ title: i18n.t('menu.myEvents')}} 
-                name="my_events" 
-                component={EventList} 
+            <MenuStack.Screen
+                options={{ title: i18n.t('menu.myEvents')}}
+                name="my_events"
+                component={EventList}
                 initialParams={{ mine: true }}
             />
         </MenuStack.Navigator>
+    );
+
+    const ExploreScreens = () => (
+        <ExploreStack.Navigator>
+            <ExploreStack.Screen
+                name="explore"
+                component={EventList}
+                options={noHeader}
+            />
+            <ExploreStack.Screen
+                name="single"
+                component={Event}
+                options={{
+                    title: i18n.t('event.event'),
+                }}
+            />
+        </ExploreStack.Navigator>
     )
 
     const SignedScreens = (
@@ -59,30 +76,30 @@ const Routes = () => {
                     tabBarLabel: i18n.t('tabBar.eventList'),
                 }} 
                 name="EventList"
-                component={EventList}
+                component={ExploreScreens}
             />
-            <Tab.Screen 
+            <Tab.Screen
                 options={{
                     ...tabScreenOptions,
-                    tabBarLabel: i18n.t('tabBar.menu')
-                }} 
-                name="Menu" 
-                component={MenuScreens} 
+                    tabBarLabel: i18n.t('tabBar.menu'),
+                }}
+                name="Menu"
+                component={MenuScreens}
             />
         </Tab.Navigator>
     );
 
     const AuthScreens = (
         <Stack.Navigator>
-            <Stack.Screen 
-                name="Login" 
-                component={Login} 
-                options={noHeader} 
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={noHeader}
             />
             <Stack.Screen 
-                options={noHeader} 
-                name="Register" 
-                component={Register} 
+                options={noHeader}
+                name="Register"
+                component={Register}
             />
         </Stack.Navigator>
     )
