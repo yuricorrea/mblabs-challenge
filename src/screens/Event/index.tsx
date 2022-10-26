@@ -15,7 +15,7 @@ const EventSingle = ({ route, navigation }) => {
     const events = useAppSelector(state => state?.events?.events) || [];
     const currentUser = useAppSelector(state => state?.account?.currentUser) || [];
     const currentEvent = events.find(e => e.id == event.id);
-    console.log(currentEvent);
+
     const isMine = currentUser?.user == currentEvent?.creator;
     const bought = currentEvent?.buyers?.includes(currentUser?.user);
 
